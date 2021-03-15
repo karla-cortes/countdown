@@ -3,8 +3,10 @@
   src: url("../fonts/RESIN-Regular.ttf") format("truetype");
 }
 
-* {
+body {
   font-family: 'RESIN-Regular';
+  background: #1C1D27;
+  color: #ffffff;
 }
 
 .main-container {
@@ -38,6 +40,31 @@
 }
 
 .playlist-container {
-  margin-top: 120px;
+  margin-top: 70px;
+  cursor: pointer;
+}
+
+.playlist-container .artist-container {
+  padding-bottom: 42px;
+  font-size: 14px;
+}
+
+.playlist-container .artist-container .artist-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 32px;
+  border-bottom: 2px solid #1F2026;
+}
+
+.playlist-container .artist-container .artist-info img {
+  width: 93px;
+  height: 93px;
+  border-radius: 32px;
+}
+
+.playlist-container .artist-container .artist-info .song-artist {
+  padding-left: 32px;
+  padding-top: 32px;
 }
 /*# sourceMappingURL=styles.css.map */

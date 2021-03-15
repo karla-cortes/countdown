@@ -1,7 +1,10 @@
 @import "./fonts.scss";
+@import "./colors.scss";
 
-* {
-    font-family: 'RESIN-Regular'
+body {
+    font-family: 'RESIN-Regular';
+    background: $background;
+    color: $white;
 }
 
 .main-container {
@@ -35,5 +38,25 @@
     
 
 .playlist-container {
-     margin-top: 120px;
+     margin-top: 70px;
+     cursor: pointer;
+     .artist-container {
+         padding-bottom: 42px;
+         font-size: 14px;
+         .artist-info {
+             display: flex;
+             padding-bottom: 32px;
+
+             border-bottom: 2px solid #1F2026;    
+             img {
+                 width: 93px;
+                 height: 93px;
+                 border-radius: 32px;
+             }
+            .song-artist {
+                padding-left: 32px;
+                padding-top: 32px;
+            }
+         }
+     }
 }

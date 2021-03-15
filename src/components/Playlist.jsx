@@ -98,7 +98,7 @@ class Playlist extends Component {
             },
             {
                 "id": 4,
-                "artist": "Jhené Aiko feat Rae Sremmurd",
+                "artist": "Jhene Aiko feat Rae Sremmurd",
                 "song": "Sativa",
                 "album": "Trip",
                 "thumbnail": "https://upload.wikimedia.org/wikipedia/en/2/2b/Jhen%C3%A9_Aiko_-_Trip.png",
@@ -131,8 +131,7 @@ class Playlist extends Component {
                 "thumbnail": "https://upload.wikimedia.org/wikipedia/en/7/76/Disclosure_-_Settle.png",
                 "director":"Bo Mirosseni",
                 "video": "https://www.youtube.com/watch?v=4nsKDJlpUbA"
-            }
-        
+            } 
           ];
         
           return (
@@ -170,9 +169,13 @@ class Playlist extends Component {
                       onClick={() => handleClick(item, index)}
                     >
                       <div className="artist-info">
-                          <p>{item.id}</p>
+                      <img src={item.thumbnail}  alt={item.album} className="album"/>
+                          <div className="song-artist">
                           <p>{item.song}</p>
                           <p>{item.artist}</p>
+                          </div>
+                         
+                          <p>{item.id}</p>
                       </div>
                     </div>
                   );
