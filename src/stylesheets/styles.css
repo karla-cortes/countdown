@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'RESIN-Regular';
+  src: url("../fonts/RESIN-Regular.ttf") format("truetype");
+}
+
+* {
+  font-family: 'RESIN-Regular';
+}
+
+.main-container {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.main-container .tv-container {
+  position: relative;
+  margin: 20px;
+}
+
+.main-container .tv-container .tv img {
+  width: 100%;
+}
+
+.main-container .tv-container .frame {
+  position: absolute;
+  width: 85% !important;
+  height: 80% !important;
+  top: 16%;
+  right: 10%;
+  z-index: -2;
+}
+
+.main-container .tv-container .frame #widget2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+.playlist-container {
+  margin-top: 120px;
+}
+/*# sourceMappingURL=styles.css.map */
