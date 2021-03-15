@@ -9,11 +9,13 @@ class Playlist extends Component {
         setMyvideo: '',
         myvideoIndex: 0,
         setMyvideoIndex: 0,
+        songid: "",
         playing: false
      }
 
      componentDidMount(){
         this.setState({myvideo: "Ungodly Hour"});
+        this.setState({songid: 10});
       }  
 
      
@@ -23,16 +25,20 @@ class Playlist extends Component {
             if (nextIndex >= arrayqueue.length) {
                 this.setState({setMyvideo: arrayqueue[0]});
                 this.setState({setMyvideoIndex: 0}); 
+                this.setState({songid: arrayqueue[nextIndex].id});
                 this.setState({myvideo: arrayqueue[this.state.myvideoIndex].song})
+               
             } else {   
                 this.setState({setMyvideo: arrayqueue[nextIndex]});
                 this.setState({setMyvideoIndex: nextIndex });
-                this.setState({myvideo: arrayqueue[nextIndex].song})
+                this.setState({songid: arrayqueue[nextIndex].id});
+                this.setState({myvideo: arrayqueue[nextIndex].song});          
             }
           }
           const handleClick = (item, index) => {
             this.setState({myvideo: item.song});
             this.setState({setMyvideo: item});
+            this.setState({songid: item.id});
             this.setState({setMyvideoIndex: index });
           }
 
@@ -135,20 +141,34 @@ class Playlist extends Component {
           ];
         
           return (
+              <React.Fragment>
+                  <div>
+                  <h2>Karlas Countdown</h2>
+                  </div>
+           
+             
             <div className="main-container">
-                <h2>Karla's Countdown</h2>
                 {
               this.state.myvideoIndex!== '' && arrayqueue[this.state. setMyvideoIndex].song === this.state.myvideo
               ? (
                   <div className="tv-container">
+                        <div className="countdown">
+             <h2 className={
+            this.state.songid === 10
+              ? "ten"
+              : "other"
+          }>{this.state.songid}</h2> 
+               </div>
+         
                 <div className="tv">
                     <img src="images/tv.png" alt="tv"/>
                      </div>
-              <ReactPlayer url={arrayqueue[this.state.setMyvideoIndex].video} className="react-player" controls={true} playing={this.state.playing} config={{ 
+              <ReactPlayer url={arrayqueue[this.state.setMyvideoIndex].video} className="react-player"  controls={true} playing={this.state.playing} config={{ 
              youtube: {
               playerVars: {
                 start: 33,
-                end: 73
+                end: 73,
+                showinfo: false
               }
             }
           }} onEnded={playNext} className="frame"/>
@@ -156,8 +176,9 @@ class Playlist extends Component {
          
           )
           : <h1>Loading..</h1>
-        }    
-        <div class="play-pause">
+        }   
+      
+        <div className="play-pause">
             <div onClick={() => handlePlay()}>Play</div>
         </div>
               <div className="playlist-container" id="style-1">
@@ -169,7 +190,11 @@ class Playlist extends Component {
                       onClick={() => handleClick(item, index)}
                     >
                       <div className="artist-info">
-                      <img src={item.thumbnail}  alt={item.album} className="album"/>
+                      <img src={item.thumbnail}  alt={item.album} className={
+            this.state.myvideo === item.song
+              ? "album active"
+              : "album"
+          }/>
                           <div className="song-artist">
                           <p>{item.song}</p>
                           <p>{item.artist}</p>
@@ -182,6 +207,7 @@ class Playlist extends Component {
                 })}
               </div>
             </div>
+             </React.Fragment>
           );
         }
     } 
